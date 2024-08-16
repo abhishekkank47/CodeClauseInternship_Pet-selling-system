@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0">
+      <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-50">
         <div className="navbar bg-base-100">
           <div className="navbar-start">
             <div className="dropdown">
@@ -32,16 +32,16 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a>Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <a>Pets</a>
+                  <a href="/pets">Pets</a>
                 </li>
                 <li>
-                  <a>About Us</a>
+                  <a href="/about-us">About Us</a>
                 </li>
                 <li>
-                  <a>Contact Us</a>
+                  <a href="contact-us">Contact Us</a>
                 </li>
                 <li>
                   <div className="">
@@ -89,16 +89,16 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">
                 <li>
-                  <a>Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <a>Pets</a>
+                  <a href="/pets">Pets</a>
                 </li>
                 <li>
-                  <a>About Us</a>
+                  <a href="/about-us">About Us</a>
                 </li>
                 <li>
-                  <a>Contact Us</a>
+                  <a href="contact-us">Contact Us</a>
                 </li>
               </ul>
             </div>
@@ -155,7 +155,7 @@ const Navbar = () => {
                 </svg>
               </label>
             </div>
-            <a className="btn bg-black mx-2 hover:bg-slate-800 cursor-pointer">
+            <a href='/login' className="btn bg-black mx-2 hover:bg-slate-800 cursor-pointer">
               Log In
             </a>
           </div>
