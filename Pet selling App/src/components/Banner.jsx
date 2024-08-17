@@ -6,7 +6,7 @@ const Banner = () => {
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row pb-9">
         <div className="w-full md:w-1/2 md:mt-32 mt-10 md:order-2 order-1">
           <div className="space-y-12">
-            <h1 className="text-4xl font-bold text-lime-100">
+            <h1 className="text-4xl font-bold dark:text-lime-100">
               HELLO PET LOVER'S ! ADOPT A NEW
               <span className="text-pink-500"> FAMILY MEMBER</span> TODAY.
             </h1>
