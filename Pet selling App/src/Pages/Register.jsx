@@ -69,15 +69,60 @@ const Register = () => {
                         />
                       </div>
                     </div>
+                    <div>   
+                      <label
+                        htmlFor
+                        className="text-base font-medium dark:text-white"
+                      >
+                        Current Address
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                          type="text"
+                          placeholder="Address"
+                        />
+                      </div>
+                    </div>
+                    <div>   
+                      <label
+                        htmlFor
+                        className="text-base font-medium dark:text-white"
+                      >
+                        Area Pin Code
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                          type="text"
+                          placeholder="Pin Code"
+                        />
+                      </div>
+                    </div>
                     <div>
                       <div className="flex items-center justify-between">
                         <label
                           htmlFor
                           className="text-base font-medium dark:text-white"
                         >
-                          Password
+                          Create Password
                         </label>
                       </div>
+                      <div className="mt-2">
+                        <input
+                          className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                          type="password"
+                          placeholder="Password"
+                        />
+                      </div>
+                    </div>
+                    <div>   
+                      <label
+                        htmlFor
+                        className="text-base font-medium dark:text-white"
+                      >
+                        Confirm Password
+                      </label>
                       <div className="mt-2">
                         <input
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
