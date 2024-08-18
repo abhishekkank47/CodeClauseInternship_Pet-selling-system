@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         required : true,
         trim : true,
         minLength : [10,"PHONE NUMBER MUST CONTAIN AT LEAST 10 DIGITS"],
-        mixLength : [10,"PHONE NUMBER MUST CONTAIN AT LEAST 10 DIGITS"]
+        maxLength : [10,"PHONE NUMBER MUST CONTAIN AT LEAST 10 DIGITS"]
     },
     email : {
         type : String,

@@ -1,5 +1,6 @@
 import { hashing, comparing } from "../Helper/PasswordHash.js";
 import { userModel } from "../Models/userModel.js";
+import JWT from "jsonwebtoken"
 
 //REGISTER CONTROLLER
 export const registerController = async (req, res) => {
@@ -63,6 +64,16 @@ export const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    //VALIDATION
+    if( !email || !password ){
+      return res.status(400).send(
+        {
+          success : false,
+          message : 'ALL FEILDS ARE REQUIRED'
+        }
+      )
+    }
+
     //FIND USER
     const user = await userModel.findOne({ email });
     if (!user) {
@@ -81,12 +92,23 @@ export const loginController = async (req, res) => {
       });
     }
 
+    //TOKEN
+    const token = await JWT.sign({_id:user._id}, process.env.JWT_SECRETE, {expiresIn : process.env.JWT_EXPIRES} )
+
+
+    //REFRESH TOKEN
+    const refreshToken = await JWT.sign({_id:user._id}, process.env.JWT_SECRETE, {expiresIn : process.env.JWT_REFRESH_EXPIRES} )
+
     //LOGIN SUCCESS
     res.status(200).send({
       success: true,
       message: "LOGIN SUCCESSFUL",
-      user
-    });
+      user : 
+        {
+          fullName : user.fullName,
+          email : user.email
+        },token, refreshToken
+      });
 
   } catch (error) {
     console.log(`ERROR IN LOGIN : ${error}`);
