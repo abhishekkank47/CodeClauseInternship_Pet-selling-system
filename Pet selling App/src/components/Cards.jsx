@@ -1,14 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Cards = ({breed,age,price,category,img}) => {
+const Cards = ({ breed, age, price, category, img }) => {
   return (
     <>
       <div className="card bg-base-100 w-96 shadow-xl mb-5 md:m-8 hover:scale-105">
         <figure>
-          <img
-            src={img}
-            alt={breed}
-          />
+          <img src={img} alt={breed} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -19,7 +17,9 @@ const Cards = ({breed,age,price,category,img}) => {
           <div className="card-actions justify-end">
             <div className="badge badge-outline">{`Age between : ${age} year`}</div>
             <div className="badge badge-outline">{`${price}/- INR`}</div>
-            <div className="badge badge-outline hover:bg-pink-500 hover:text-black p-3 font-bold cursor-pointer">Adopt</div>
+            <div className="badge badge-outline hover:bg-pink-500 hover:text-black p-3 font-bold cursor-pointer">
+              <Link to="/adopt">Adopt</Link>
+            </div>
           </div>
         </div>
       </div>

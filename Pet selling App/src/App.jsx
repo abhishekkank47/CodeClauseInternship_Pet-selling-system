@@ -8,6 +8,8 @@ import Login from "./Pages/Login";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Register from "./Pages/Register";
+import Adopt from "./Pages/Protected/Adopt";
+import AdoptCheckout from "./Pages/Protected/AdoptCheckout";
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
       <Route path="/pets" element={<Pets/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="/adopt" element={<Adopt/>}/>
+      <Route path="/adopt-checkout" element={<AdoptCheckout/>}/>
     </Routes>
     <Footer />
 
