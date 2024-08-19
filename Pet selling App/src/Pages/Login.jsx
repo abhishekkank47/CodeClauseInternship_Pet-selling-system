@@ -1,7 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate('')
+
+    //handle Submit Form
+    const handleSubmitForm = async(e) =>{
+      e.preventDefault()
+  
+      //TO GET REGISTERED DATA FOR LOGIN FRONTEND FROM BACKEND DATABASE
+      try {
+        const reciveData = await axios.post(`http://localhost:8000/api/v1/auth/login`,{ email, password })
+        if(reciveData.data.success){
+          navigate("/adopt")}
+        
+      } catch (error) {
+        console.log(`ERROR IN LOGIN : ${error}`)
+      }
+  
+      console.log(email,password)
+    }
+
   return (
     <>
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 pt-20">
@@ -22,7 +44,7 @@ const Login = () => {
                     Create a free account
                   </Link>
                 </p>
-                <form name='login' action="#" method="POST" className="mt-8">
+                <form onSubmit={handleSubmitForm} name='login' action="#" method="POST" className="mt-8">
                   <div className="space-y-5">
                     <div>
                       <label
@@ -36,6 +58,8 @@ const Login = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="email"
                           placeholder="Email"
+                          value={email}
+                          onChange={(e)=>setEmail(e.target.value)}
                         />
                       </div>
                     </div>
@@ -53,12 +77,15 @@ const Login = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="password"
                           placeholder="Password"
+                          value={password}
+                          onChange={(e)=>setPassword(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
                     <div>
                       <button
-                        type="button"
+                        type="submit"
                         className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                       >
                         LOG IN

@@ -7,4 +7,4 @@ export const authRoutes = experss.Router();
 authRoutes.post('/register', registerController )
 
 //LOGIN ROUTE
-authRoutes.get('/login', loginController )
+authRoutes.post('/login', loginController )

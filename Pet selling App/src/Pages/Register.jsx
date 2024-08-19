@@ -1,7 +1,40 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"
 
 const Register = () => {
+  const [fullName, setFullName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [address, setAddress] = useState('')
+  const [pin, setPin] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const navigate = useNavigate('')
+
+  //handle Submit Form
+  const handleSubmitForm = async(e) =>{
+    e.preventDefault()
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+          throw("PASSWORD DO NOT MATCH ENTER CORRECT PASSWORD")
+          return;
+          
+        }
+
+    //TO SUBMIT DATA FRONTEND TO BACKEND DATABASE
+    try {
+      const sendData = await axios.post(`http://localhost:8000/api/v1/auth/register`,{ fullName, phone, email, address, pin, password, confirmPassword })
+      if(sendData.data.success){
+        navigate("/login")}
+    } catch (error) {
+      console.log(`ERROR IN REGISTRATION : ${error}`)
+    }
+
+    console.log(fullName,email,phone,password,confirmPassword,address,pin)
+  }
+
   return (
     <>
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 pt-20">
@@ -22,7 +55,7 @@ const Register = () => {
                     Log in with Registered email
                   </Link>
                 </p>
-                <form name='register' action="#" method="POST" className="mt-8">
+                <form onSubmit={handleSubmitForm} name='register' action="#" method="POST" className="mt-8">
                   <div className="space-y-5">
                     <div>   
                       <label
@@ -36,6 +69,9 @@ const Register = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="text"
                           placeholder="Full name"
+                          value={fullName}
+                          onChange={(e)=>setFullName(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -51,6 +87,9 @@ const Register = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="text"
                           placeholder="Phone"
+                          value={phone}
+                          onChange={(e)=>setPhone(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -66,6 +105,8 @@ const Register = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="email"
                           placeholder="Email"
+                          value={email}
+                          onChange={(e)=>setEmail(e.target.value)}
                         />
                       </div>
                     </div>
@@ -81,6 +122,9 @@ const Register = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="text"
                           placeholder="Address"
+                          value={address}
+                          onChange={(e)=>setAddress(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -96,6 +140,9 @@ const Register = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="text"
                           placeholder="Pin Code"
+                          value={pin}
+                          onChange={(e)=>setPin(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -113,6 +160,9 @@ const Register = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="password"
                           placeholder="Password"
+                          value={password}
+                          onChange={(e)=>setPassword(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -128,12 +178,14 @@ const Register = () => {
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                           type="password"
                           placeholder="Password"
+                          value={confirmPassword}
+                          onChange={(e)=>setConfirmPassword(e.target.value)}
                         />
                       </div>
                     </div>
                     <div>
                       <button
-                        type="button"
+                        type='submit'
                         className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                       >
                         REGISTER
