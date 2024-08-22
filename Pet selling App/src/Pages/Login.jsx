@@ -6,7 +6,7 @@ import { useAuth } from '../context api/authContext';
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigate = useNavigate('')
+  const navigate = useNavigate()
   const [auth, setAuth] = useAuth()
 
     //handle Submit Form

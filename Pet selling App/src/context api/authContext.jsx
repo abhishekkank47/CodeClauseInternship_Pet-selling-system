@@ -1,3 +1,4 @@
+import axios from "axios";
 import {useState, useContext, createContext, useEffect } from "react"
 
 const authContext = createContext()
@@ -14,6 +15,9 @@ const Authprovider = ({children}) =>{
             refreshToken : ""
         }
         //WHATEVER WE WRITE HERE IS CAN BE ACCESEBLE EVERY COMPONENT, WHEN  WE USE OUR CUSTOM HOOK AND IMPORTING IN Main.jsx FILE
+        //default axios
+        
+
     )
  useEffect(() => {
     const storedAuth = localStorage.getItem("auth");
@@ -22,16 +26,15 @@ const Authprovider = ({children}) =>{
         const parseData = JSON.parse(storedAuth);
         setAuth({
           ...auth,
-          user: parseData.user || null,
-          email : parseData.email || "",
-          phone : parseData.phone || "",
-          address : parseData.address || "",
-          token: parseData.token || "",
-          refreshToken: parseData.refreshToken || ""
+          user: parseData.user,
+          email : parseData.email,
+          phone : parseData.phone,
+          address : parseData.address,
+          token: parseData.token,
+          refreshToken: parseData.refreshToken
         });
       } catch (error) {
         console.error("Failed to parse auth data from localStorage:", error);
-        // Optionally clear invalid data from localStorage
         localStorage.removeItem("auth");
       }
     }

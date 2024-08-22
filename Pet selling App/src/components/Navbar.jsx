@@ -13,11 +13,15 @@ const Navbar = () => {
   const handleLogout = ()=>{
     setAuth(
       {
-        user : null,
-        token : "",
-        refreshToken : ''
+        user: null,
+        email: "",
+        phone: "",
+        address: "",
+        token: "",
+        refreshToken: "",
       }
     )
+    localStorage.removeItem('auth');
   }
   return (
     <>
@@ -47,7 +51,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-64 p-2 shadow"
               >
                 <li>
                   <Link to="/">Home</Link>
@@ -110,7 +114,7 @@ const Navbar = () => {
               ) : (
                 <>
 
-                <Link onClick={handleLogout} to='/' className="btn bg-red-600 mx-2 text-xs hover:bg-green-500 cursor-pointer text-white hover:text-black">
+                <Link onClick={handleLogout} to='/login' className="btn bg-red-600 mx-2 text-xs hover:bg-green-500 cursor-pointer text-white hover:text-black">
                               Log Out <MdLogout />
                 </Link>
                 </>

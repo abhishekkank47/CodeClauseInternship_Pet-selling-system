@@ -8,3 +8,12 @@ authRoutes.post('/register', registerController )
 
 //LOGIN ROUTE
 authRoutes.post('/login', loginController )
+
+//FOR PROTECTED ROUTE
+authRoutes.get('/user-auth' , (req, res )=>{
+    res.status(200).send(
+        {
+            ok : true
+        }
+    )
+})

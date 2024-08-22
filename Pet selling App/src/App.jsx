@@ -11,6 +11,7 @@ import Register from "./Pages/Register";
 import Adopt from "./Pages/Protected/Adopt";
 import AdoptCheckout from "./Pages/Protected/AdoptCheckout";
 import UserAccount from "./Pages/Protected/UserAccount";
+import ProtectedRoutes from "./components/Routes/ProtectedRoutes";
 
 
 
@@ -26,9 +27,13 @@ function App() {
       <Route path="/pets" element={<Pets/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
-      <Route path="/adopt" element={<Adopt/>}/>
-      <Route path="/adopt-checkout" element={<AdoptCheckout/>}/>
-      <Route path="/user-account" element={<UserAccount/>}/>
+      
+      //PROTECTED ROUTES
+      <Route path="" element ={ <ProtectedRoutes/>}>
+        <Route path="/user-account" element={<UserAccount/>}/>
+        <Route path="/adopt" element={<Adopt/>}/>
+        <Route path="/adopt-checkout" element={<AdoptCheckout/>}/>
+      </Route>
     </Routes>
     <Footer />
 
