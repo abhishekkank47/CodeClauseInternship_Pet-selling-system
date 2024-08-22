@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios"
 import { useAuth } from '../context api/authContext';
 
@@ -8,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const [auth, setAuth] = useAuth()
+  const location = useLocation()
 
     //handle Submit Form
     const handleSubmitForm = async(e) =>{
@@ -28,7 +29,7 @@ const Login = () => {
             token: reciveData.data.token
           }));
   
-          navigate("/pets");
+          navigate( location.state || "/pets");
         }
           
         

@@ -12,6 +12,8 @@ import Adopt from "./Pages/Protected/Adopt";
 import AdoptCheckout from "./Pages/Protected/AdoptCheckout";
 import UserAccount from "./Pages/Protected/UserAccount";
 import ProtectedRoutes from "./components/Routes/ProtectedRoutes";
+import AdminRoutes from "./components/Routes/AdminRoutes";
+import AdminDashboards from "./Pages/Protected/AdminDashboards";
 
 
 
@@ -33,6 +35,9 @@ function App() {
         <Route path="/user-account" element={<UserAccount/>}/>
         <Route path="/adopt" element={<Adopt/>}/>
         <Route path="/adopt-checkout" element={<AdoptCheckout/>}/>
+      </Route>
+      <Route path="" element={<AdminRoutes/>}>
+      <Route path="/admin-dashboard" element={<AdminDashboards/>}/>
       </Route>
     </Routes>
     <Footer />
