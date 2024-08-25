@@ -12,7 +12,8 @@ const Authprovider = ({children}) =>{
             phone : "",
             address : "",
             token : "",
-            refreshToken : ""
+            refreshToken : "",
+            role : ""
         }
         //WHATEVER WE WRITE HERE IS CAN BE ACCESEBLE EVERY COMPONENT, WHEN  WE USE OUR CUSTOM HOOK AND IMPORTING IN Main.jsx FILE
         //default axios
@@ -31,7 +32,8 @@ const Authprovider = ({children}) =>{
           phone : parseData.phone,
           address : parseData.address,
           token: parseData.token,
-          refreshToken: parseData.refreshToken
+          refreshToken: parseData.refreshToken,
+          role : parseData.role
         });
       } catch (error) {
         console.error("Failed to parse auth data from localStorage:", error);
