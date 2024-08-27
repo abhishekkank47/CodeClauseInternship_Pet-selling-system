@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../../components/DashComponents/AdminSidebar";
+import axios from "axios";
 
 const CreateCategory = () => {
+  const [category, setCategory] = useState('')
+
+  const handleCreationCategory = async(req,res) =>{
+    const category = await axios.post('http://localhost:8000/api/v1/category/create-category')
+
+    setCategory(category)
+    console.log(category)
+    res.status(201).send(
+      {
+        success : true,
+        message: 'CATEGORY CREATED SUCCESFULLY'
+      }
+    )
+  }
+
+  useEffect(()=>{
+    handleCreationCategory()
+  },[handleCreationCategory])
+
   return (
     <>
       <div>
@@ -21,10 +41,12 @@ const CreateCategory = () => {
                   <div className="m-7">
                     <input
                       type="text"
+                      value = {category}
+                      onChange={(e)=>setCategory(e.target.value)}
                       placeholder="Enter a New Product Category"
                       className="input input-ghost w-full max-w-xs"
                     />
-                    <button className="btn btn-wide btn-success m-3">
+                    <button onClick={handleCreationCategory} className="btn btn-wide btn-success m-3">
                       Create As New Category
                     </button>
                   </div>
