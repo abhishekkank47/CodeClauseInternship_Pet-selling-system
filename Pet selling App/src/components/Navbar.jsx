@@ -5,6 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
 import { BiSolidUserDetail } from "react-icons/bi";
+import { FaPaw } from "react-icons/fa";
 
 const Navbar = () => {
   const [auth, setAuth] = useAuth();
@@ -93,7 +94,7 @@ const Navbar = () => {
                 )}
               </ul>
             </div>
-            <Link className="btn btn-ghost text-xl">Pet Selling App</Link>
+            <Link className="btn btn-ghost text-lg md:text-2xl"><FaPaw /> PetPal Market </Link>
           </div>
           <div className="navbar-end">
             <div className="navbar-center hidden lg:flex">
