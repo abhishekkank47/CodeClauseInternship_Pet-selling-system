@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import HomepageCardList from "../../public/images/HomeListData/HomeCardList.json";
 import Cards from "./Cards";
+import axios from "axios";
 
 const HomepageCard = () => {
+
+  const [products, setProducts] = useState([''])
+
+  const fetchProductDatabse = async()=>{
+    
+    try {
+      const product = await axios.get(`http://localhost:8000/api/v1/product/getall-product`)
+      
+      if(product.data.success){
+        setProducts(product.data.Product)
+      }
+    } catch (error) {
+      console.log(`ERROR WHILE FETCHING PRODUCT FROM DATABASE : ${error}`)
+    }
+  }
+
+  useEffect(()=>{ fetchProductDatabse() },[])
+
+
   let settings = {
     dots: true,
     infinite: false,
@@ -52,13 +71,14 @@ const HomepageCard = () => {
       </div>
       <div className="slider-container max-w-screen-2xl container mx-auto md:px-20 px-4 pb-9">
         <Slider {...settings}>
-          {HomepageCardList.map((i) => (
+          {products.map((i) => (
             <Cards
               key={i.id}
               breed={i.breed}
               age={i.age}
               price={i.price}
-              category={i.category}
+              offer="40% offer"
+              details={i.details}
               img={i.img}
             />
           ))}

@@ -1,8 +1,27 @@
-import React from "react";
-import HomepageCardList from "../../public/images/HomeListData/HomeCardList.json";
+import React, { useEffect, useState } from "react";
 import Cards from "../components/Cards";
+import axios from "axios";
 
 const Pets = () => {
+  const [products, setProducts] = useState([''])
+  const [categories, setCategories] = useState([]);
+
+  const fetchProductDatabse = async()=>{
+    
+    try {
+      const product = await axios.get(`http://localhost:8000/api/v1/product/getall-product`)
+
+      if(product.data.success){
+        setProducts(product.data.Product)
+      }    
+
+    } catch (error) {
+      console.log(`ERROR WHILE FETCHING PRODUCT FROM DATABASE : ${error}`)
+    }
+  }
+
+  useEffect(()=>{ fetchProductDatabse() },[])
+
   return (
     <>
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 pb-9 flex flex-wrap">
@@ -19,13 +38,14 @@ const Pets = () => {
           </p>
         </div>
         </center>
-        {HomepageCardList.map((i) => (
+        {products.map((i) => (
           <Cards
             key={i.id}
             breed={i.breed}
             age={i.age}
+            details={i.details}
             price={i.price}
-            category={i.category}
+            offer='40% off'
             img={i.img}
           />
         ))}
