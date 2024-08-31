@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context api/authContext";
+import { useCart } from "../context api/cartContext";
 
-const Cards = ({ breed, age, price, details, offer, img }) => {
+const Cards = ({ breed, age, price, details, offer, img, product }) => {
+  const [auth, setAuth] = useAuth();
+  const [cart, setCart] = useCart([]);
 
-  const [auth, setAuth] = useAuth()
   return (
     <>
       <div className="card bg-base-100 w-96 shadow-xl mb-5 md:m-8 hover:scale-105">
@@ -21,7 +23,18 @@ const Cards = ({ breed, age, price, details, offer, img }) => {
             <div className="badge badge-outline">{`Age between : ${age} year`}</div>
             <div className="badge badge-outline">{`${price}/- INR`}</div>
             <div className="badge badge-outline hover:bg-pink-500 hover:text-black p-3 font-bold cursor-pointer">
-              <Link to={ !auth.user ? "/login" : '/dashboard/adopt' }>Adopt</Link>
+              <Link
+                to={!auth.user ? "/login" : ""}
+                onClick={() => {
+                  setCart([...cart, product]);
+                  localStorage.setItem(
+                    "cart",
+                    JSON.stringify([...cart, product])
+                  );
+                }}
+              >
+                Adopt
+              </Link>
             </div>
           </div>
         </div>

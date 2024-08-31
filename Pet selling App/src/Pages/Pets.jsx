@@ -4,7 +4,6 @@ import axios from "axios";
 
 const Pets = () => {
   const [products, setProducts] = useState([''])
-  const [categories, setCategories] = useState([]);
 
   const fetchProductDatabse = async()=>{
     
@@ -47,6 +46,7 @@ const Pets = () => {
             price={i.price}
             offer='40% off'
             img={i.img}
+            product={i}
           />
         ))}
       </div>

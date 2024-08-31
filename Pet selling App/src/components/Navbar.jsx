@@ -6,9 +6,11 @@ import { MdLogout } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
 import { BiSolidUserDetail } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
+import { useCart } from "../context api/cartContext";
 
 const Navbar = () => {
   const [auth, setAuth] = useAuth();
+  const [cart, setCart] = useCart([]);
 
   //handle Logout
   const handleLogout = () => {
@@ -70,20 +72,38 @@ const Navbar = () => {
                       <details>
                         <summary>
                           <FaRegUser />
-                          <Link to="dashboard/user-account">{auth.user.email}</Link>
+                          <Link to="dashboard/user-account">
+                            {auth.user.email}{" "}
+                            {cart?.length === 0 ? (
+                              ""
+                            ) : (
+                              <div className="badge badge-secondary badge-sm text-white font-semibold mx-2">
+                                {cart.length}
+                              </div>
+                            )}
+                          </Link>
                         </summary>
                         <ul className="bg-base-100 rounded-t-none p-2">
-                        <li>
-                          <Link to={ `dashboard/${ auth?.user?.role === 1 ? 'admin-dashboard' : 'user-dashboard'}`}>
-                        {" "}
-                        <BiSolidUserDetail /> Dashboard
-                      </Link>
+                          <li>
+                            <Link
+                              to={`dashboard/${
+                                auth?.user?.role === 1
+                                  ? "admin-dashboard"
+                                  : "user-dashboard"
+                              }`}
+                            >
+                              {" "}
+                              <BiSolidUserDetail /> Dashboard
+                            </Link>
                           </li>
                           <li>
-                          <Link to="dashboard/adopt">
-                        {" "}
-                        <FaCartShopping /> Adopt Wish-list
-                      </Link>
+                            <Link to="dashboard/adopt">
+                              {" "}
+                              <FaCartShopping /> Adopt {" "}
+                              <div className="badge badge-secondary badge-sm text-white font-semibold mx-2">
+                                {cart.length}
+                              </div>
+                            </Link>
                           </li>
                         </ul>
                       </details>
@@ -94,7 +114,9 @@ const Navbar = () => {
                 )}
               </ul>
             </div>
-            <Link className="btn btn-ghost text-lg md:text-2xl"><FaPaw /> PetPal Market </Link>
+            <Link className="btn btn-ghost text-lg md:text-2xl">
+              <FaPaw /> PetPal Market{" "}
+            </Link>
           </div>
           <div className="navbar-end">
             <div className="navbar-center hidden lg:flex">
@@ -117,20 +139,38 @@ const Navbar = () => {
                       <details>
                         <summary>
                           <FaRegUser />
-                          <Link to="dashboard/user-account">{auth.user.email}</Link>
+                          <Link to="dashboard/user-account">
+                            {auth.user.email}{" "}
+                            {cart?.length === 0 ? (
+                              ""
+                            ) : (
+                              <div className="badge badge-secondary badge-sm text-white font-semibold mx-2">
+                                {cart.length}
+                              </div>
+                            )}
+                          </Link>
                         </summary>
                         <ul className="bg-base-100 rounded-t-none p-2">
-                        <li>
-                          <Link to={ `dashboard/${ auth?.user?.role === 1 ? 'admin-dashboard' : 'user-dashboard'}`}>
-                        {" "}
-                        <BiSolidUserDetail /> Dashboard
-                      </Link>
+                          <li>
+                            <Link
+                              to={`dashboard/${
+                                auth?.user?.role === 1
+                                  ? "admin-dashboard"
+                                  : "user-dashboard"
+                              }`}
+                            >
+                              {" "}
+                              <BiSolidUserDetail /> Dashboard
+                            </Link>
                           </li>
                           <li>
-                          <Link to="dashboard/adopt">
-                        {" "}
-                        <FaCartShopping /> Adopt Wish-list
-                      </Link>
+                            <Link to="dashboard/adopt">
+                              {" "}
+                              <FaCartShopping /> Adopt {" "}
+                              <div className="badge badge-secondary badge-sm text-white font-semibold mx-2">
+                                {cart.length}
+                              </div>
+                            </Link>
                           </li>
                         </ul>
                       </details>

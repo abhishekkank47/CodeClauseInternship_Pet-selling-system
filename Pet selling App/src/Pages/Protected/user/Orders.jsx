@@ -17,10 +17,7 @@ const Orders = () => {
               </h1>
             </div>
             <div className="p-4">
-              <h1 className="text-2xl font-bold">Welcome to my dashboard!</h1>
-              <p className="mt-2 text-gray-600">
-                This is an example dashboard using Tailwind CSS.
-              </p>
+                <h1 className='text-4xl font-bold flex justify-center p-48'>NOTHING TO SHOW HERE</h1>
             </div>
           </div>
         </div>
