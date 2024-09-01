@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context api/authContext";
-import { useCart } from "../context api/cartContext";
+import { useCart } from "../context api/CartContext";
 
 const Cards = ({ breed, age, price, details, offer, img, product }) => {
   const [auth, setAuth] = useAuth();
