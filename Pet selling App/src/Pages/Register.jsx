@@ -25,7 +25,7 @@ const Register = () => {
 
     //TO SUBMIT DATA FRONTEND TO BACKEND DATABASE
     try {
-      const sendData = await axios.post(`http://localhost:8000/api/v1/auth/register`,{ fullName, phone, email, address, pin, password, confirmPassword })
+      const sendData = await axios.post(`https://pet-selling-ecommerce-platform.onrender.com/api/v1/auth/register`,{ fullName, phone, email, address, pin, password, confirmPassword })
       if(sendData.data.success){
         navigate("/login")}
     } catch (error) {

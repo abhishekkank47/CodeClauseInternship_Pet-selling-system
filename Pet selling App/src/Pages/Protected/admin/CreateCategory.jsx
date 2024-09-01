@@ -16,7 +16,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/api/v1/category/create-category",
+        "https://pet-selling-ecommerce-platform.onrender.com/api/v1/category/create-category",
         { name },
         { headers: { Authorization: auth?.token } }
       );
@@ -34,7 +34,7 @@ const CreateCategory = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/v1/category/getall-category"
+        "https://pet-selling-ecommerce-platform.onrender.com/api/v1/category/getall-category"
       );
 
       if (data.success) {
@@ -50,7 +50,7 @@ const CreateCategory = () => {
     e.preventDefault()
     try {
       const { data } = await axios.put(
-        `http://localhost:8000/api/v1/category/update-category/${editId._id}`,{ name: edit },{headers : { "Authorization" : auth?.token}}
+        `https://pet-selling-ecommerce-platform.onrender.com/api/v1/category/update-category/${editId._id}`,{ name: edit },{headers : { "Authorization" : auth?.token}}
       );
 
       if (data.success) {
@@ -68,7 +68,7 @@ const CreateCategory = () => {
   //DELETE BUTTON FOR CATEGORY
   const deleteCategory = async(id)=>{
     try {
-      const {data} = await axios.delete(`http://localhost:8000/api/v1/category/delete-category/${id}`,{headers : { "Authorization" : auth?.token}})
+      const {data} = await axios.delete(`https://pet-selling-ecommerce-platform.onrender.com/api/v1/category/delete-category/${id}`,{headers : { "Authorization" : auth?.token}})
 
       if (data.success) {
         getAllCategory()

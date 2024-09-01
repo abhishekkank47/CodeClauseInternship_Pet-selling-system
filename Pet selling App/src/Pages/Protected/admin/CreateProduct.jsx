@@ -39,7 +39,7 @@ const CreateProduct = () => {
   
       // Send the form data to the backend
       const product = await axios.post(
-        "http://localhost:8000/api/v1/product/create-product",
+        "https://pet-selling-ecommerce-platform.onrender.com/api/v1/product/create-product",
         formData,
         {
           headers: {
@@ -62,7 +62,7 @@ const CreateProduct = () => {
     const getAllCategory = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:8000/api/v1/category/getall-category"
+          "https://pet-selling-ecommerce-platform.onrender.com/api/v1/category/getall-category"
         );
   
         if (data?.success) {

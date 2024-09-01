@@ -12,7 +12,7 @@ const HomepageCard = () => {
   const fetchProductDatabse = async()=>{
     
     try {
-      const product = await axios.get(`http://localhost:8000/api/v1/product/getall-product`)
+      const product = await axios.get(`https://pet-selling-ecommerce-platform.onrender.com/api/v1/product/getall-product`)
       
       if(product.data.success){
         setProducts(product.data.Product)
