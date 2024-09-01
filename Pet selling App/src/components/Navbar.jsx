@@ -6,7 +6,7 @@ import { MdLogout } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
 import { BiSolidUserDetail } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
-import { useCart } from "../context api/cartContext";
+import { useCart } from "../context api/CartContext";
 
 const Navbar = () => {
   const [auth, setAuth] = useAuth();
