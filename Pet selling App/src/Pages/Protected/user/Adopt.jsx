@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../../../context api/cartContext";
+import { useCart } from "../../../context api/CartContext";
 import { useAuth } from "../../../context api/authContext";
 
 const Adopt = () => {
