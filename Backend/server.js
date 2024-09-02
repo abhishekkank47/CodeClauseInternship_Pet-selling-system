@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(
   cors({
-    origin : ['https://pet-selling-system-ecommerce-platform-ritrieash.vercel.app'],
+    origin : ['https://pet-selling-ecommerce-platform.vercel.app'],
     methods : ['GET','POST','PUT','DELETE'],
     credentials : true
   }))
