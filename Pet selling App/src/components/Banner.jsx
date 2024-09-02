@@ -36,7 +36,7 @@ const Banner = () => {
           <div className="md:mt-32 m-5 ">
             <img
               className="rounded-2xl"
-              src="../public/images/homepagePetsimg.jpg"
+              src="../images/homepagePetsimg.jpg"
               alt="Pet's image"
             />
           </div>
