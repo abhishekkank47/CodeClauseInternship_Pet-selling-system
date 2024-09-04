@@ -33,7 +33,7 @@ const Banner = () => {
             </div>
         </div>
         <div className="w-full md:w-1/2">
-          <div className="md:mt-32 m-5 ">
+          <div className="md:mt-32 m-5 mt-24 ">
             <img
               className="rounded-2xl"
               src="../images/homepagePetsimg.jpg"

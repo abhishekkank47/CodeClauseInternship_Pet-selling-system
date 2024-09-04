@@ -14,7 +14,7 @@ const HomepageCard = () => {
     try {
       const product = await axios.get(`https://pet-selling-ecommerce-platform.onrender.com/api/v1/product/getall-product`)
       
-      if(product.data.success){
+      if(product?.data?.success){
         setProducts(product.data.Product)
       }
     } catch (error) {
@@ -69,9 +69,9 @@ const HomepageCard = () => {
           On Yearly basis ! Some Of Them Shown Below.
         </p>
       </div>
-      <div className="slider-container max-w-screen-2xl container mx-auto md:px-20 px-4 pb-9">
-        <Slider {...settings}>
-          {products.map((i) => (
+      <div className="slider-container max-w-screen-2xl container mx-auto md:px-20  pb-9">
+        <Slider {...settings} >
+          {products?.map((i) => (
             <Cards
               key={i.id}
               breed={i.breed}

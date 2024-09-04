@@ -186,7 +186,7 @@ const Navbar = () => {
               <>
                 <Link
                   to="/login"
-                  className="btn bg-pink-500 mx-2 hover:bg-blue-500 cursor-pointer text-white hover:text-black"
+                  className="btn bg-pink-500 p-2 md:p-4 hover:bg-blue-500 cursor-pointer text-white hover:text-black"
                 >
                   Log In
                 </Link>

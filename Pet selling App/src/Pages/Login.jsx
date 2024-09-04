@@ -17,7 +17,7 @@ const Login = () => {
       //TO GET REGISTERED DATA FOR LOGIN FRONTEND FROM BACKEND DATABASE
       try {
         const reciveData = await axios.post(`https://pet-selling-ecommerce-platform.onrender.com/api/v1/auth/login`,{ email, password})
-        if (reciveData.data.success) {
+        if (reciveData?.data?.success) {
           
           setAuth({
             user: reciveData.data.user,  

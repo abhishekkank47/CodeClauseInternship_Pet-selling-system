@@ -131,7 +131,7 @@ const CreateProduct = () => {
                           >
                             <option value="">Select Category</option>
                             {
-                              categories.map((c)=>(
+                              categories?.map((c)=>(
                                 <option key={c._id} value={c._id}>{c.name}</option>
                               ))
                             }

@@ -10,7 +10,7 @@ const Pets = () => {
     try {
       const product = await axios.get(`https://pet-selling-ecommerce-platform.onrender.com/api/v1/product/getall-product`)
 
-      if(product.data.success){
+      if(product?.data?.success){
         setProducts(product.data.Product)
       }    
 
@@ -37,7 +37,7 @@ const Pets = () => {
           </p>
         </div>
         </center>
-        {products.map((i) => (
+        {products?.map((i) => (
           <Cards
             key={i.id}
             breed={i.breed}
