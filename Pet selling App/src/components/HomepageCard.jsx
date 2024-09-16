@@ -4,26 +4,31 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from "./Cards";
 import axios from "axios";
+import "./HomePageCards.css";
 
 const HomepageCard = () => {
+  const [products, setProducts] = useState([""]);
+  const [backendLoad, setBackendLoad] = useState(true);
 
-  const [products, setProducts] = useState([''])
-
-  const fetchProductDatabse = async()=>{
-    
+  const fetchProductDatabse = async () => {
     try {
-      const product = await axios.get(`https://pet-selling-ecommerce-platform.onrender.com/api/v1/product/getall-product`)
-      
-      if(product?.data?.success){
-        setProducts(product.data.Product)
+      setBackendLoad(true);
+      const product = await axios.get(
+        `https://pet-selling-ecommerce-platform.onrender.com/api/v1/product/getall-product`
+      );
+
+      if (product?.data?.success) {
+        setProducts(product.data.Product);
+        setBackendLoad(false);
       }
     } catch (error) {
-      console.log(`ERROR WHILE FETCHING PRODUCT FROM DATABASE : ${error}`)
+      console.log(`ERROR WHILE FETCHING PRODUCT FROM DATABASE : ${error}`);
     }
-  }
+  };
 
-  useEffect(()=>{ fetchProductDatabse() },[])
-
+  useEffect(() => {
+    fetchProductDatabse();
+  }, []);
 
   let settings = {
     dots: true,
@@ -70,19 +75,34 @@ const HomepageCard = () => {
         </p>
       </div>
       <div className="slider-container max-w-screen-2xl container mx-auto md:px-20  pb-9">
-        <Slider {...settings} >
-          {products?.map((i) => (
-            <Cards
-              key={i.id}
-              breed={i.breed}
-              age={i.age}
-              price={i.price}
-              offer="40% offer"
-              details={i.details}
-              img={i.img}
-            />
-          ))}
-        </Slider>
+        {backendLoad ? (
+          <>
+          <div className="p-10 pt-16">
+           
+          <div className="loader"></div>
+          </div>
+            <h1 className="text-xl font-bold text-center dark:text-lime-200 p-3">
+                Backend Is On Free Depolyment Service, So Please Give
+                Seconds For Loading Features ...
+              </h1>
+          </>
+        ) : (
+          <>
+            <Slider {...settings}>
+              {products?.map((i) => (
+                <Cards
+                  key={i.id}
+                  breed={i.breed}
+                  age={i.age}
+                  price={i.price}
+                  offer="40% offer"
+                  details={i.details}
+                  img={i.img}
+                />
+              ))}
+            </Slider>
+          </>
+        )}
       </div>
     </>
   );
